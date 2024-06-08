@@ -18,8 +18,10 @@ public class AppConfig {
 
     @Bean("customerRedisTemplate")
     public RedisTemplate<String, Customer> customerRedisTemplate() {
+        var stdSerializer =  new StringRedisSerializer();
         var template = new RedisTemplate<String, Customer>();
         template.setConnectionFactory(redisConnectionFactory());
+        template.setKeySerializer(stdSerializer);
         template.setHashKeySerializer(new StringRedisSerializer());
         template.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(Customer.class));
         return template;
