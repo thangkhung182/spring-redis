@@ -1,0 +1,1 @@
+echo "GET http://localhost:8080/customer/b79cff2f-97bc-4160-9447-381a1dd2e263" | vegeta attack -name=2000qs -duration=10s -rate=100 | tee benchmark/results_2000qps.bin | vegeta repor
